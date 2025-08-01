@@ -1,0 +1,240 @@
+*,
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+li,
+p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.75rem;
+  font-size: 1rem;
+}
+
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 3rem;
+  font-size: 2rem;
+}
+
+h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.75rem;
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1.5rem;
+}
+
+body {
+  background-color: #f1f0e4;
+}
+body footer {
+  padding: 1rem 0 2rem 0;
+  margin: 0 0 0 auto;
+}
+body footer * {
+  text-align: center;
+}
+body main {
+  background-color: #3e3f29;
+  padding: 0 3rem 3rem 3rem;
+}
+body main h1 {
+  color: #ced28c;
+}
+body main p,
+body main h2,
+body main h3,
+body main li,
+body main a {
+  color: #adb076;
+}
+body main ul {
+  list-style: outside;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 2rem;
+}
+body main ul li {
+  margin-left: 1rem;
+}
+body main ul ::marker {
+  content: "- ";
+}
+body footer {
+  box-sizing: border-box;
+}
+body footer * {
+  color: #3e3f29;
+}
+
+img {
+  max-width: clamp(160px, 30vw, 300px);
+  aspect-ratio: 1/1;
+  border-radius: 50%; /* make the image a perfect circle */
+  object-fit: cover; /* mask the image to maintain aspect ratio */
+  border: 5px solid #f1f0e4;
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile styles (320px breakpoint) */
+@media (max-width: 768px) {
+  body {
+    padding-top: 3rem;
+  }
+  main {
+    margin-top: 80px;
+    min-height: calc(100vh - 80px - 6rem);
+  }
+  main img {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    margin-bottom: -4rem;
+  }
+  main .texts h1,
+  main .texts h2,
+  main .texts h3 {
+    text-align: center;
+  }
+  main .texts h1 {
+    margin-bottom: 2rem;
+  }
+  main .texts h2,
+  main .texts h3 {
+    margin-bottom: 0.75rem;
+  }
+  main .texts p {
+    text-align: justify;
+    margin-bottom: 0.75rem;
+  }
+}
+/* Tablet styles (768px breakpoint) */
+@media (min-width: 768px) and (max-width: 1200px) {
+  body {
+    padding: 0 0 0 0;
+  }
+  body footer {
+    width: 80%;
+    padding: 1rem 0 1rem 2rem;
+    margin: 0 0 0 auto;
+    border-left: 4px solid #3e3f29;
+  }
+  body footer * {
+    text-align: left;
+  }
+  body main {
+    width: 80%;
+    min-height: calc(100vh - 5rem);
+    padding: 3rem 0 2rem 0;
+    margin: 0 0 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0;
+  }
+  body main img {
+    grid-column: 1/2;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translateX(-50%);
+  }
+  body main .texts {
+    grid-column: 2/3;
+    padding-top: calc(80px - 1.5rem);
+    padding-right: 3rem;
+  }
+  body main .texts h1,
+  body main .texts h2,
+  body main .texts h3 {
+    text-align: left;
+  }
+  body main .texts h1 {
+    margin-bottom: 2rem;
+  }
+  body main .texts h2,
+  body main .texts h3 {
+    margin-bottom: 0.75rem;
+  }
+  body main .texts p {
+    text-align: left;
+    margin-bottom: 0.75rem;
+  }
+}
+/* Desktop styles (1024px breakpoint) */
+@media (min-width: 1200px) {
+  body {
+    padding: 0;
+  }
+  body footer {
+    width: 80%;
+    padding: 1rem 0 1rem 2rem;
+    margin: 0 0 0 auto;
+    border-left: 4px solid #3e3f29;
+  }
+  body footer * {
+    text-align: left;
+  }
+  body main {
+    width: 80%;
+    padding: 3rem 0 0 0;
+    margin: 0 0 0 auto;
+    min-height: calc(100vh - 3rem);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: flex-start;
+    gap: 0;
+  }
+  body main img {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translateX(-50%);
+  }
+  body main .texts {
+    grid-column: 2/3;
+    max-width: 1500px;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 0 3rem;
+    padding-top: calc(80px - 1.5rem);
+    padding-right: max(3rem, 3vw);
+  }
+  body main .texts h1,
+  body main .texts h2,
+  body main .texts h3 {
+    text-align: left;
+  }
+  body main .texts h1 {
+    margin-bottom: 2rem;
+    grid-column: 1/3;
+    grid-row: 1/2;
+  }
+  body main .texts h2,
+  body main .texts h3 {
+    margin-bottom: 0.75rem;
+  }
+  body main .texts p {
+    text-align: left;
+    margin-bottom: 0.75rem;
+  }
+  body main .texts section {
+    max-width: min(40ch, 1fr);
+  }
+}
+
+/*# sourceMappingURL=stylesheet.css.map */
