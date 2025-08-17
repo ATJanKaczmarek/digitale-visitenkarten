@@ -1,8 +1,83 @@
-$background-color: #f1f0e4; // example primary color
-$primary-color: #3e3f29; // example secondary color
-$font-color: #ced28c;
-$font-color-secondary: #adb076;
+// 1. Deine Farbpaletten (Syntax für die Keys korrigiert)
+// Die Keys in einer Map sind Strings, keine Variablen.
+$color-schemes: (
+  default: (
+    "background-color": #f1f0e4,
+    "primary-color": #3e3f29,
+    "font-color": #ced28c,
+    "font-color-secondary": #adb076,
+  ),
+  tom: (
+    "background-color": #ed8f90,
+    "primary-color": #a4161a,
+    "font-color": #ffffff,
+    "font-color-secondary": #f5f3f4,
+  ),
+  sabine: (
+    "background-color": #cbe6ed,
+    "primary-color": #72a2ac,
+    "font-color": #fff7f8,
+    "font-color-secondary": #f4e8e1,
+  ),
+);
 
+// 2. Ein Mixin, das alle farbabhängigen Stile enthält
+// Es nimmt eine Farbpalette entgegen und wendet sie an.
+@mixin apply-color-scheme($palette) {
+  // Farben aus der übergebenen Palette extrahieren
+  $bg-color: map-get($palette, "background-color");
+  $primary-color: map-get($palette, "primary-color");
+  $font-color: map-get($palette, "font-color");
+  $font-color-secondary: map-get($palette, "font-color-secondary");
+
+  // Farbige Stile anwenden
+  background-color: $bg-color;
+
+  main {
+    background-color: $primary-color;
+    h1 {
+      color: $font-color;
+    }
+    p,
+    h2,
+    h3,
+    li,
+    a {
+      color: $font-color-secondary;
+    }
+  }
+
+  footer {
+    * {
+      color: $primary-color;
+    }
+  }
+
+  img {
+    border-color: $bg-color;
+  }
+
+  // Farbige Stile innerhalb von Media Queries
+  @media (min-width: 768px) {
+    footer {
+      border-left: 4px solid $primary-color;
+    }
+  }
+}
+
+// 3. Generiere die CSS-Klassen für jedes Schema automatisch
+// Diese Schleife geht durch deine Map und wendet das Mixin für jedes Schema an.
+@each $scheme-name, $palette in $color-schemes {
+  body.#{$scheme-name} {
+    @include apply-color-scheme($palette);
+  }
+}
+
+// ----------------------------------------------------
+// -- DEINE FARB-UNA-BHÄNGIGEN STILE (BLEIBEN GLEICH) --
+// ----------------------------------------------------
+
+// Font Mixins
 @mixin poppins-light {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
@@ -21,6 +96,7 @@ $font-color-secondary: #adb076;
   font-style: normal;
 }
 
+// Globale Stile & Typografie
 *,
 html,
 body {
@@ -52,8 +128,8 @@ h3 {
   font-size: 1.5rem;
 }
 
+// Layout-Stile
 body {
-  background-color: $background-color;
   footer {
     padding: 1rem 0 2rem 0;
     margin: 0 0 0 auto;
@@ -62,18 +138,7 @@ body {
     }
   }
   main {
-    background-color: $primary-color;
     padding: 0 3rem 3rem 3rem;
-    h1 {
-      color: $font-color;
-    }
-    p,
-    h2,
-    h3,
-    li,
-    a {
-      color: $font-color-secondary;
-    }
 
     ul {
       li {
@@ -91,18 +156,15 @@ body {
 
   footer {
     box-sizing: border-box;
-    * {
-      color: $primary-color;
-    }
   }
 }
 
 img {
   max-width: clamp(160px, 30vw, 300px);
   aspect-ratio: 1/1;
-  border-radius: 50%; /* make the image a perfect circle */
-  object-fit: cover; /* mask the image to maintain aspect ratio */
-  border: 5px solid $background-color;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid; // Die Farbe wird jetzt durch das Mixin gesetzt
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -150,7 +212,7 @@ img {
       width: 80%;
       padding: 1rem 0 1rem 2rem;
       margin: 0 0 0 auto;
-      border-left: 4px solid $primary-color;
+      // Der Border wird jetzt durch das Mixin gesetzt
       * {
         text-align: left;
       }
@@ -174,8 +236,7 @@ img {
 
       .texts {
         grid-column: 2/3;
-
-        padding-top: calc(80px - 1.5rem); // (image height / 2) - (h1 / 2)
+        padding-top: calc(80px - 1.5rem);
         padding-right: 3rem;
         h1,
         h2,
@@ -197,6 +258,7 @@ img {
     }
   }
 }
+
 /* Desktop styles (1024px breakpoint) */
 @media (min-width: 1200px) {
   body {
@@ -205,7 +267,7 @@ img {
       width: 80%;
       padding: 1rem 0 1rem 2rem;
       margin: 0 0 0 auto;
-      border-left: 4px solid $primary-color;
+      // Der Border wird jetzt durch das Mixin gesetzt
       * {
         text-align: left;
       }
@@ -231,13 +293,11 @@ img {
 
       .texts {
         grid-column: 2/3;
-
         max-width: 1500px;
         display: grid;
         grid-template-columns: 2fr 3fr;
         gap: 0 3rem;
-
-        padding-top: calc(80px - 1.5rem); // (image height / 2) - (h1 / 2)
+        padding-top: calc(80px - 1.5rem);
         padding-right: max(3rem, 3vw);
         h1,
         h2,

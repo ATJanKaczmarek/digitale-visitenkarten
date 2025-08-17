@@ -1,3 +1,87 @@
+body.default {
+  background-color: #f1f0e4;
+}
+body.default main {
+  background-color: #3e3f29;
+}
+body.default main h1 {
+  color: #ced28c;
+}
+body.default main p,
+body.default main h2,
+body.default main h3,
+body.default main li,
+body.default main a {
+  color: #adb076;
+}
+body.default footer * {
+  color: #3e3f29;
+}
+body.default img {
+  border-color: #f1f0e4;
+}
+@media (min-width: 768px) {
+  body.default footer {
+    border-left: 4px solid #3e3f29;
+  }
+}
+
+body.tom {
+  background-color: #ed8f90;
+}
+body.tom main {
+  background-color: #a4161a;
+}
+body.tom main h1 {
+  color: #ffffff;
+}
+body.tom main p,
+body.tom main h2,
+body.tom main h3,
+body.tom main li,
+body.tom main a {
+  color: #f5f3f4;
+}
+body.tom footer * {
+  color: #a4161a;
+}
+body.tom img {
+  border-color: #ed8f90;
+}
+@media (min-width: 768px) {
+  body.tom footer {
+    border-left: 4px solid #a4161a;
+  }
+}
+
+body.sabine {
+  background-color: #cbe6ed;
+}
+body.sabine main {
+  background-color: #72a2ac;
+}
+body.sabine main h1 {
+  color: #fff7f8;
+}
+body.sabine main p,
+body.sabine main h2,
+body.sabine main h3,
+body.sabine main li,
+body.sabine main a {
+  color: #f4e8e1;
+}
+body.sabine footer * {
+  color: #72a2ac;
+}
+body.sabine img {
+  border-color: #cbe6ed;
+}
+@media (min-width: 768px) {
+  body.sabine footer {
+    border-left: 4px solid #72a2ac;
+  }
+}
+
 *,
 html,
 body {
@@ -37,9 +121,6 @@ h3 {
   font-size: 1.5rem;
 }
 
-body {
-  background-color: #f1f0e4;
-}
 body footer {
   padding: 1rem 0 2rem 0;
   margin: 0 0 0 auto;
@@ -48,18 +129,7 @@ body footer * {
   text-align: center;
 }
 body main {
-  background-color: #3e3f29;
   padding: 0 3rem 3rem 3rem;
-}
-body main h1 {
-  color: #ced28c;
-}
-body main p,
-body main h2,
-body main h3,
-body main li,
-body main a {
-  color: #adb076;
 }
 body main ul {
   list-style: outside;
@@ -76,16 +146,13 @@ body main ul ::marker {
 body footer {
   box-sizing: border-box;
 }
-body footer * {
-  color: #3e3f29;
-}
 
 img {
   max-width: clamp(160px, 30vw, 300px);
   aspect-ratio: 1/1;
-  border-radius: 50%; /* make the image a perfect circle */
-  object-fit: cover; /* mask the image to maintain aspect ratio */
-  border: 5px solid #f1f0e4;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid;
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -130,7 +197,6 @@ img {
     width: 80%;
     padding: 1rem 0 1rem 2rem;
     margin: 0 0 0 auto;
-    border-left: 4px solid #3e3f29;
   }
   body footer * {
     text-align: left;
@@ -182,7 +248,6 @@ img {
     width: 80%;
     padding: 1rem 0 1rem 2rem;
     margin: 0 0 0 auto;
-    border-left: 4px solid #3e3f29;
   }
   body footer * {
     text-align: left;
